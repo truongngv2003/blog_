@@ -6,7 +6,7 @@ if (typeof localStorage === "undefined" || localStorage === null) {
 
 
 const User = {
-    getID : () => localStorage.getItem('SGHBUserID'),
+    getID : () => localStorage.getItem('NVTUserID'),
 }
 
 module.exports = User;

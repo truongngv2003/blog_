@@ -77,7 +77,7 @@ class ManagersController{
                     }
                 }else{
                     console.log('ID người dùng không hợp lệ');
-                    localStorage.setItem('SGHBUserID', '');
+                    localStorage.setItem('NVTUserID', '');
                     res.redirect('/');
                 }
             }catch(err){
@@ -86,7 +86,7 @@ class ManagersController{
             }
         }else{
             console.log('ID người dùng không hợp lệ');
-            localStorage.setItem('SGHBUserID', '');
+            localStorage.setItem('NVTUserID', '');
             res.redirect('/');
         }
     }
@@ -149,7 +149,7 @@ class ManagersController{
                     }
                 }else{
                     console.log('ID người dùng không hợp lệ');
-                    localStorage.setItem('SGHBUserID', '');
+                    localStorage.setItem('NVTUserID', '');
                     res.redirect('/');
                 }
             }catch(err){
@@ -158,7 +158,7 @@ class ManagersController{
             }
         }else{
             console.log('ID người dùng không hợp lệ');
-            localStorage.setItem('SGHBUserID', '');
+            localStorage.setItem('NVTUserID', '');
             res.redirect('/');
         }
     }
@@ -221,7 +221,7 @@ class ManagersController{
                     }
                 }else{
                     console.log('ID người dùng không hợp lệ');
-                    localStorage.setItem('SGHBUserID', '');
+                    localStorage.setItem('NVTUserID', '');
                     res.redirect('/');
                 }
             }catch(err){
@@ -230,7 +230,7 @@ class ManagersController{
             }
         }else{
             console.log('ID người dùng không hợp lệ');
-            localStorage.setItem('SGHBUserID', '');
+            localStorage.setItem('NVTUserID', '');
             res.redirect('/');
         }
     }

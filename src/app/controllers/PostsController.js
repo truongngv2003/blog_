@@ -76,7 +76,7 @@ class PostsController{
                         countComment: comments.length,
                     })
                 }else{
-                    localStorage.setItem('SGHBUserID', ''); // Xóa dữ liệu trong localStorage
+                    localStorage.setItem('NVTUserID', ''); // Xóa dữ liệu trong localStorage
                     likeStatus = false;
                     res.render('posts/readPost', {
                         post: mongooseToObject(post),
@@ -90,7 +90,7 @@ class PostsController{
                 next(err);
             }
         } else{
-            localStorage.setItem('SGHBUserID', ''); // Xóa dữ liệu trong localStorage
+            localStorage.setItem('NVTUserID', ''); // Xóa dữ liệu trong localStorage
             likeStatus = false;
             res.render('posts/readPost', {
                 post: mongooseToObject(post),
@@ -167,14 +167,14 @@ class PostsController{
                         next(err);
                     }
                 }else{
-                    localStorage.setItem('SGHBUserID', ''); // Xóa dữ liệu trong localStorage
+                    localStorage.setItem('NVTUserID', ''); // Xóa dữ liệu trong localStorage
                     res.redirect('/');
                 }
             }catch(err){
                 next(err);
             }
         }else{
-            localStorage.setItem('SGHBUserID', ''); // Xóa dữ liệu trong localStorage
+            localStorage.setItem('NVTUserID', ''); // Xóa dữ liệu trong localStorage
             res.redirect('/');
         }
     }

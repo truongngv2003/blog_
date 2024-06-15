@@ -109,7 +109,7 @@ class SiteController {
                 if (user) {
                     res.redirect('/');
                 } else {
-                    localStorage.setItem('SGHBUserID', '');
+                    localStorage.setItem('NVTUserID', '');
                     const invalid = req.flash('invalid')[0] == 'true' ? true : false;
                     res.render('auth/signIn', {
                         authPage: true,
@@ -120,7 +120,7 @@ class SiteController {
                 next(err);
             }
         } else {
-            localStorage.setItem('SGHBUserID', '');
+            localStorage.setItem('NVTUserID', '');
             const invalid = req.flash('invalid')[0] == 'true' ? true : false;
             res.render('auth/signIn', {
                 authPage: true,
@@ -140,7 +140,7 @@ class SiteController {
                 if (user) {
                     res.redirect('/');
                 } else {
-                    localStorage.setItem('SGHBUserID', '');
+                    localStorage.setItem('NVTUserID', '');
                     res.render('auth/signUp', {
                         authPage: true,
                         userName: userName,
@@ -150,7 +150,7 @@ class SiteController {
                 next(err);
             }
         } else {
-            localStorage.setItem('SGHBUserID', '');
+            localStorage.setItem('NVTUserID', '');
             res.render('auth/signUp', {
                 authPage: true,
                 userName: userName,
@@ -160,7 +160,7 @@ class SiteController {
 
     // [GET] /sign_out    // đăng xuất
     signOut(req, res) {
-        localStorage.setItem('SGHBUserID', '');
+        localStorage.setItem('NVTUserID', '');
         res.redirect('/');
     }
 
@@ -173,7 +173,7 @@ class SiteController {
             req.flash('invalid', 'true');
             res.redirect('/sign_in');
         } else {
-            localStorage.setItem('SGHBUserID', user._id.toString());
+            localStorage.setItem('NVTUserID', user._id.toString());
             res.redirect('/');
         }
     }
@@ -199,7 +199,7 @@ class SiteController {
             }
             await newUser.save();
             const user = await User.findOne({ name: userName, password: password });
-            localStorage.setItem('SGHBUserID', user._id.toString());
+            localStorage.setItem('NVTUserID', user._id.toString());
             res.redirect('/');
         }
 
@@ -261,7 +261,7 @@ class SiteController {
                         holdQuery: holdQuery,
                     });
                 } else {
-                    localStorage.setItem('SGHBUserID', '');
+                    localStorage.setItem('NVTUserID', '');
                     res.render('home', {
                         posts: mutipleMongooseToObject(posts),
                         page: page,
@@ -276,7 +276,7 @@ class SiteController {
                 next(err);
             }
         } else {
-            localStorage.setItem('SGHBUserID', '');
+            localStorage.setItem('NVTUserID', '');
             try {
                 const posts = await Post.find(conditionFind).skip((req.params.page - 1) * page_size).limit(page_size).sort(conditionSort);
                 res.render('home', {
