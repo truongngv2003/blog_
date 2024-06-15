@@ -1,0 +1,135 @@
+<div class="container-fluid mt-4">
+    <div class="row">
+        <div class="col-lg-9 col-md-12 mb-4">
+            <div class="d-flex justify-content-between align-items-center mb-3 p-2 bg-light">
+                <div class="dropdown">
+                    <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Sắp xếp
+                    </button>
+                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                        <form action="" method="GET" name="sort">
+                            <input type="hidden" id="sortValue" name="sort" value="">
+                            <input type="hidden" id="searchValue" {{#if q}} name="q"  value="{{q}}" {{/if}}>
+                            <button class="dropdown-item" type="button" onclick="setValueAndSubmit('date')">Thời gian</button>
+                            <button class="dropdown-item" type="button" onclick="setValueAndSubmit('like')">Lượt thích</button>
+                        </form>
+                    </div>
+                </div>
+                <form class="form-inline" action="" method="GET">
+                    <input class="form-control mr-2" type="search" placeholder="Search" aria-label="Search" name="q">
+                    <button class="btn btn-outline-primary" type="submit">Tìm kiếm</button>
+                </form>
+            </div>
+            <div class="row">
+                {{#each posts}}
+                <div class="col-lg-4 col-md-6 mb-4 d-flex">
+                    <div class="card h-100 w-100 d-flex flex-column">
+                        <a href="/posts/{{this._id}}">
+                            <img class="card-img-top" src="{{this.thumbnail}}" alt="{{this.title}}">
+                        </a>
+                        <div class="card-body d-flex flex-column">
+                            <a href="/posts/{{this._id}}" class="text-decoration-none">
+                                <h5 class="card-title">{{this.title}}</h5>
+                            </a>
+                            <p class="card-text flex-grow-1 description">{{this.description}}</p>
+                            <a href="/posts/{{this._id}}" class="btn btn-primary mt-auto">Đọc bài viết</a>
+                        </div>
+                    </div>
+                </div>
+                {{/each}}
+            </div>
+            <nav aria-label="Page navigation example">
+                <ul class="pagination justify-content-center">
+                    {{#if noHome}}
+                    <li class="page-item">
+                        <a class="page-link" {{#if (checkPageHome (diff checkPage 1))}}href="/{{holdQuery}}"{{else}}href="/page/{{#diff checkPage 1}}{{/diff}}/{{holdQuery}}"{{/if}}>Previous</a>
+                    </li>
+                    {{/if}}
+                    {{#each page}}
+                    <li class="page-item">
+                        <a class="page-link" {{#if (checkPageHome this.ind)}}href='/{{this.holdQuery}}'{{else}}href='/page/{{this.ind}}/{{this.holdQuery}}'{{/if}}>{{this.ind}}</a>
+                    </li>
+                    {{/each}}
+                    {{#if noEnd}}
+                    <li class="page-item">
+                        <a class="page-link" href="/page/{{#sum checkPage 1}}{{/sum}}/{{holdQuery}}">Next</a>
+                    </li>
+                    {{/if}}
+                </ul>
+            </nav>
+        </div>
+
+        <div class="col-lg-3 col-md-12">
+            <aside class="bg-white p-4 rounded mb-4">
+                <h4 class="border-bottom pb-2">ABOUT ME</h4>
+                <img src="/image/avatarAdmin.jpg" alt="Avatar admin" class="rounded-circle mx-auto d-block mt-3" style="width: 90%; height: auto;">
+                <h2 class="text-center mt-4" style="font-size: 20px;">Nguyễn Văn Trường 20215496</h2>
+                <hr class="border-info" style="width: 50%; margin-top: -3px; border-width: 1.8px;">
+                <p class="text-center">
+                    <a href="https://hust.edu.vn/" target="_blank"><strong>Hanoi University <br>of Science and Technology</strong></a>
+                </p>
+            </aside>
+            <aside class="bg-white p-4 rounded mb-4">
+                <h4 class="border-bottom pb-2 mb-4">CONTACT ME</h4>
+                <div class="row text-center">
+                    <div class="col-6 mb-3">
+                        <a href="https://www.facebook.com/truongnguyenbka" target="_blank" class="text-decoration-none">
+                            <i class="bi bi-facebook" style="font-size: 2rem;"></i>
+                            <div>Facebook</div>
+                        </a>
+                    </div>
+                    <div class="col-6 mb-3">
+                        <a href="#" target="_blank" class="text-decoration-none">
+                            <i class="bi bi-instagram" style="font-size: 2rem;"></i>
+                            <div>Instagram</div>
+                        </a>
+                    </div>
+                    <div class="col-6 mb-3">
+                        <a href="#" target="_blank" class="text-decoration-none">
+                            <i class="bi bi-linkedin" style="font-size: 2rem;"></i>
+                            <div>Linkedin</div>
+                        </a>
+                    </div>
+                    <div class="col-6 mb-3">
+                        <a href="mailto:truongnguyenmailbka@gmail.com" target="_blank" class="text-decoration-none">
+                            <i class="bi bi-envelope" style="font-size: 2rem;"></i>
+                            <div>Mail</div>
+                        </a>
+                    </div>
+                    <div class="col-6 mb-3">
+                        <a href="https://github.com/truongngv2003" target="_blank" class="text-decoration-none">
+                            <i class="bi bi-github" style="font-size: 2rem;"></i>
+                            <div>Github</div>
+                        </a>
+                    </div>
+                </div>
+            </aside>
+            <aside class="text-center">
+                <b style="color: #007BFF;">HAVE A NICE DAY!</b>
+                <br><br>
+            </aside>
+        </div>
+    </div>
+</div>
+
+<script>
+    function setValueAndSubmit(value) {
+        document.getElementById("sortValue").value = value;
+        const searchInput = document.querySelector('input[name="q"]');
+        if (searchInput) {
+            document.getElementById("searchValue").value = searchInput.value;
+        }
+        document.forms['sort'].submit();
+    }
+</script>
+
+<link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.5.0/font/bootstrap-icons.css" rel="stylesheet">
+<style>
+    .description {
+        overflow: hidden;
+        text-overflow: ellipsis;
+        display: -webkit-box;
+        -webkit-line-clamp: 4; /* Number of lines to show */
+        -webkit-box-orient: vertical;
+    }
+</style>

@@ -1,0 +1,60 @@
+
+
+
+<div class=" container rounded mt-4 border mb-5 " style="background-color: white;">
+    <div class=" text-center mt-4">
+        <h3>CẬP NHẬT BÀI ĐĂNG</h3>
+    </div>
+
+    <form class="mt-4 mb-4" method="POST" action="/posts/{{post._id}}/{{user._id}}?_method=PUT" onsubmit="return validateContentForm()">
+        <div class="form-group">
+            <label for="title">Tiêu đề bài đăng <inline style="color: red;">(*)</inline></label>
+            <input type="text" class="form-control" id="title" name="title" value="{{post.title}}" required>
+        </div>
+        <div class="form-group">
+            <label for="description">Mô tả <inline style="color: red;">(*)</inline></label>
+            <input type="text" class="form-control" id="description" name="description" value="{{post.description}}" required>
+        </div>
+        <div class="form-group">
+            <label for="thumbnail">URL Ảnh đại diện <inline style="color: red;">(*)</inline></label>
+            <input type="text" class="form-control" id="thumbnail" name="thumbnail" value="{{post.thumbnail}}" required>
+        </div>
+        <div class="form-group">
+            <label for="contentHtml">Nội dung <inline style="color: red;">(*)</inline></label>
+            <textarea class="form-control" id="contentHtml" name="contentHtml"  rows="10" style="display: none;"></textarea>
+            <div id="contentTinymce">{{{post.contentHtml}}}</div>
+        </div>
+        <button type="submit" class="btn btn-primary">Lưu lại</button>
+    </form>
+    <a href="/users/{{user._id}}/posts"><button class="btn btn-danger mt-1 mb-4">Hủy</button></a>
+    <p class="mb-4"><inline style="color: red;">Chú ý: </inline>Người dùng bắt buộc phải cung cấp thông tin đối với các trường có  <inline style="color: red;">(*)</inline></p>
+</div>
+
+
+<script src="/tinymce/tinymce.min.js"></script>
+<script type="text/javascript">
+  tinymce.init({
+    selector: '#contentTinymce',
+    license_key: 'gpl',
+    plugins: "textcolor code list autolink link lists",
+    toolbar1: " undo redo | styles | indent outdent | bullist numlist | code | link ",
+    toolbar2: "forecolor backcolor bold italic | alignleft aligncenter alignright justify ",
+    toolbar_mode: 'sliding',
+    link_default_target: '_blank',
+  });
+</script>
+<script>
+    function validateContentForm() {
+        var content = tinymce.get('contentTinymce').getContent();
+
+        if (!content.trim()) {
+            alert('Vui lòng nhập nội dung bài đăng');
+            return false; // Ngăn form gửi đi
+        }
+         // Gán nội dung của trình soạn thảo vào textarea trước khi gửi form
+        document.getElementById('contentHtml').value = content;
+        return true; // Cho phép form gửi đi
+    }
+</script>
+
+
