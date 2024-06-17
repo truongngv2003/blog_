@@ -1,38 +1,76 @@
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-    <a class="navbar-brand ml-3" href="/" >Homepage</a>
+<nav class="navbar navbar-expand-lg" style="background-color: #f8f9fa;">
+    <a class="navbar-brand ml-3" href="/">Homepage</a>
     
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        {{#if user}}
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav ml-auto">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav ml-auto">
+            {{#if user}}
                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        <img src="{{user.avatar}}" alt="" class="rounded-circle" style="width: 30px; height: 30px;">
-                        <span style="color: white;">{{user.name}}</span>
+                    <a class="nav-link dropdown-toggle d-flex align-items-center" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <img src="{{user.avatar}}" alt="Avatar" class="rounded-circle mr-2" style="width: 30px; height: 30px;">
+                        <span>{{user.name}}</span>
                     </a>
                     <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                    <a class="dropdown-item" href="/users/{{user._id}}/info">Thông tin cá nhân</a> 
-                    <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" href="/users/{{user._id}}/posts">Bài viết của tôi</a> 
-                    <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" href="/users/{{user._id}}/create">Tạo bài viết mới</a> 
-                    <div class="dropdown-divider"></div>
-                    {{#if (checkRoleAdmin user.role) }}
-                    <a class="dropdown-item" href="/managers/pendingPost" style="color: rgb(0, 4, 255);">Trang quản lý</a>
-                    <div class="dropdown-divider"></div>
-                    {{/if}}
-                    <a class="dropdown-item" href="/sign_out">Đăng xuất</a>
-
+                        <a class="dropdown-item" href="/users/{{user._id}}/info">Thông tin cá nhân</a> 
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="/users/{{user._id}}/posts">Bài viết của tôi</a> 
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="/users/{{user._id}}/create">Tạo bài viết mới</a> 
+                        <div class="dropdown-divider"></div>
+                        {{#if (checkRoleAdmin user.role) }}
+                            <a class="dropdown-item text-primary" href="/managers/pendingPost">Trang quản lý</a>
+                            <div class="dropdown-divider"></div>
+                        {{/if}}
+                        <a class="dropdown-item" href="/sign_out">Đăng xuất</a>
                     </div>
                 </li>
-            </ul>
-        </div>
-    {{else}}
-    <div class="ml-auto">
-         <button type="button" class="btn btn-primary mr-1"><a href="/sign_in" style="text-decoration: none; color: white;">Đăng nhập</a></button>
-         <button type="button" class="btn btn-light border rounded ml-1"><a href="/sign_up" style="text-decoration: none; color: #007BFF;">Đăng ký</a></button>
+            {{else}}
+                <li class="nav-item">
+                    <a class="btn btn-primary mr-2" href="/sign_in">Đăng nhập</a>
+                </li>
+                <li class="nav-item">
+                    <a class="btn btn-light border" href="/sign_up">Đăng ký</a>
+                </li>
+            {{/if}}
+        </ul>
     </div>
-    {{/if}}
 </nav>
+
+<style>
+    .navbar-brand {
+        font-weight: bold;
+        font-size: 1.5rem;
+        color: #343a40;
+    }
+    .navbar-nav .nav-link {
+        color: #343a40;
+        transition: color 0.3s ease;
+    }
+    .navbar-nav .nav-link:hover {
+        color: #0056b3;
+    }
+    .dropdown-menu a {
+        transition: background-color 0.3s ease, color 0.3s ease;
+    }
+    .dropdown-menu a:hover {
+        background-color: #0056b3;
+        color: #fff;
+    }
+    .btn-primary {
+        background-color: #007bff;
+        border-color: #007bff;
+    }
+    .btn-light {
+        color: #007bff;
+        background-color: #f8f9fa;
+        border-color: #f8f9fa;
+    }
+    .btn-light:hover {
+        color: #fff;
+        background-color: #007bff;
+        border-color: #007bff;
+    }
+</style>

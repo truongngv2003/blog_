@@ -10,8 +10,8 @@
                         <form action="" method="GET" name="sort">
                             <input type="hidden" id="sortValue" name="sort" value="">
                             <input type="hidden" id="searchValue" {{#if q}} name="q"  value="{{q}}" {{/if}}>
-                            <button class="dropdown-item" type="button" onclick="setValueAndSubmit('date')">Thời gian</button>
-                            <button class="dropdown-item" type="button" onclick="setValueAndSubmit('like')">Lượt thích</button>
+                            <button class="dropdown-item" type="button" onclick="setValueAndSubmit('date')">Bài viết mới nhất</button>
+                            <button class="dropdown-item" type="button" onclick="setValueAndSubmit('like')">Lượt thích nhiều nhất</button>
                         </form>
                     </div>
                 </div>
@@ -102,10 +102,16 @@
                             <div>Github</div>
                         </a>
                     </div>
+                    <div class="col-6 mb-3">
+                        <a href="#" target="_blank" class="text-decoration-none">
+                            <i class="bi bi-twitter" style="font-size: 2rem;"></i>
+                            <div>Twitter</div>
+                        </a>
+                    </div>
                 </div>
             </aside>
             <aside class="text-center">
-                <b style="color: #007BFF;">HAVE A NICE DAY!</b>
+                <b style="color: #007BFF;">NGÀY MỚI VUI VẺ!</b>
                 <br><br>
             </aside>
         </div>
