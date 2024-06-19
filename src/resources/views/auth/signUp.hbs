@@ -11,16 +11,16 @@
             <h2 class="text-center mb-4" style="font-size: 32px;">Tạo tài khoản của bạn</h2>
             <form action="/sign_up" method="POST" onsubmit="return validatePassword() ">
                 <div class="form-group">
-                    <label for="userNameInput" class="mb-1">User name</label>
-                    <input type="text" class="form-control" id="userNameInput" name="userNameInput" placeholder="Tên đăng nhập" required>
+                    <label for="userNameInput" class="mb-1">Tên đăng nhập</label>
+                    <input type="text" class="form-control" id="userNameInput" name="userNameInput" placeholder="Nhập tên đăng nhập" required>
                 </div>
                 <div id="alert-username-err" style="color: red;"></div>
                 <div class="form-group">
-                    <label for="passwordInput" class="mb-1">Password</label>
-                    <input type="password" class="form-control password" id="passwordInput" name="passwordInput"  placeholder="Mật khẩu" required>
+                    <label for="passwordInput" class="mb-1">Mật khẩu</label>
+                    <input type="password" class="form-control password" id="passwordInput" name="passwordInput"  placeholder="Nhập mật khẩu" required>
                 </div>
                 <div class="form-group">
-                    <label for="passworConfirmInput" class="mb-1">Password confirmation</label>
+                    <label for="passworConfirmInput" class="mb-1">Xác nhận mật khẩu</label>
                     <input type="password" class="form-control password" id="passworConfirmInput"  placeholder="Nhập lại mật khẩu" required>
                 </div>
                 <div id="alert-pass-err" style="color: red;"></div>

@@ -12,7 +12,7 @@ const route = require('./route');
 const db = require('./config/db');
 
 const app = express();
-const port = 3000;
+const port = 6303;
 
 
 app.use(cookieParser('keyboard cat'));
